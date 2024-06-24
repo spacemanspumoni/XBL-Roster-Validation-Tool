@@ -25,8 +25,10 @@ public partial class HomeViewModel : ViewModelBase
     private readonly ISystemIoWrapper _systemIoWrapper;
 
     private ObservableCollection<FranchiseSelection> _franchises = new();
+    private ObservableCollection<TeamSelection> _teams = new();
     private bool _interactionEnabled;
     private FranchiseSelection? _selectedFranchise;
+    private TeamSelection? _selectedTeam;
     private bool _atLeastOneFranchiseSeasonExists;
 
     public HomeViewModel(INavigationService navigationService, IDataService dataService,
@@ -41,7 +43,7 @@ public partial class HomeViewModel : ViewModelBase
 
         _applicationContext.PropertyChanged += ApplicationContextOnPropertyChanged;
 
-        GetFranchises();
+        GetSaveData();
     }
 
     public FranchiseSelection? SelectedFranchise
@@ -58,10 +60,30 @@ public partial class HomeViewModel : ViewModelBase
         }
     }
 
+    public TeamSelection? SelectedTeam
+    {
+        get => _selectedTeam;
+        set
+        {
+            SetField(ref _selectedTeam, value);
+            _applicationContext.SelectedTeam = value;
+
+            var teamName = value?.TeamName ?? "None";
+            Log.Information("Set selected team to {TeamName}", teamName);
+            OnPropertyChanged(nameof(TeamSelected));
+        }
+    }
+
     public ObservableCollection<FranchiseSelection> Franchises
     {
         get => _franchises;
         private set => SetField(ref _franchises, value);
+    }
+
+    public ObservableCollection<TeamSelection> Teams
+    {
+        get => _teams;
+        private set => SetField(ref _teams, value);
     }
 
     public bool InteractionEnabled
@@ -83,6 +105,7 @@ public partial class HomeViewModel : ViewModelBase
     }
 
     private bool FranchiseSelected => SelectedFranchise is not null;
+    private bool TeamSelected => SelectedTeam is not null;
 
     private bool AtLeastOneFranchiseSeasonExists
     {
@@ -461,10 +484,28 @@ public partial class HomeViewModel : ViewModelBase
         return FranchiseSelected && AtLeastOneFranchiseSeasonExists;
     }
 
-    private void GetFranchises()
+    private void GetSaveData()
     {
+        InteractionEnabled = true;
+        _dataService.GetTeams()
+            .ContinueWith(task =>
+            {
+                if (task.Exception != null)
+                {
+                    DefaultExceptionHandler.HandleException(_systemIoWrapper, "Failed to get teams.",
+                        task.Exception);
+                    return;
+                }
+
+                if (task.Result.Any())
+                {
+                    Log.Debug("{Count} Teams found", task.Result.Count);
+                    Teams = new ObservableCollection<TeamSelection>(task.Result);
+                    InteractionEnabled = true;
+                }
+            });
         _dataService.GetFranchises()
-            .ContinueWith(async task =>
+            .ContinueWith(task =>
             {
                 if (task.Exception != null)
                 {
@@ -478,13 +519,6 @@ public partial class HomeViewModel : ViewModelBase
                     Log.Debug("{Count} Franchises found", task.Result.Count);
                     Franchises = new ObservableCollection<FranchiseSelection>(task.Result);
                     InteractionEnabled = true;
-                }
-                else
-                {
-                    Log.Debug("No franchises found, navigating to landing page");
-                    MessageBox.Show("No franchises found. Please select a different save file.");
-                    await _dataService.Disconnect();
-                    _navigationService.NavigateTo<LandingViewModel>();
                 }
             });
     }

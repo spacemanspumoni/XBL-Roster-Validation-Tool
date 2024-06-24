@@ -25,13 +25,13 @@
                             Orientation="Vertical"
                             VerticalAlignment="Stretch">
                     <Label HorizontalAlignment="Stretch"
-                           Content="Select a franchise:" />
+                           Content="Select a team:" />
                     <ComboBox
                         HorizontalAlignment="Stretch"
                         Height="25"
-                        DisplayMemberPath="DisplayText"
-                        ItemsSource="{Binding Franchises}"
-                        SelectedItem="{Binding SelectedFranchise}" />
+                        DisplayMemberPath="TeamName"
+                        ItemsSource="{Binding Teams}"
+                        SelectedItem="{Binding SelectedTeam}" />
 
                     <Label
                         Visibility="{Binding NoFranchiseSeasonsVisibility}"

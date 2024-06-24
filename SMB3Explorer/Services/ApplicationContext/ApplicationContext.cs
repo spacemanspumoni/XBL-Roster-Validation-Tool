@@ -10,6 +10,7 @@ namespace SMB3Explorer.Services.ApplicationContext;
 public sealed class ApplicationContext : IApplicationContext, INotifyPropertyChanged
 {
     private FranchiseSelection? _selectedFranchise;
+    private TeamSelection? _selectedTeam;
     private bool _franchiseSeasonsLoading;
     private FranchiseSeason? _mostRecentFranchiseSeason;
 
@@ -23,7 +24,18 @@ public sealed class ApplicationContext : IApplicationContext, INotifyPropertyCha
         }
     }
 
+    public TeamSelection? SelectedTeam
+    {
+        get => _selectedTeam;
+        set
+        {
+            SetField(ref _selectedTeam, value);
+            OnPropertyChanged(nameof(IsTeamSelected));
+        }
+    }
+
     public bool IsFranchiseSelected => SelectedFranchise is not null;
+    public bool IsTeamSelected => SelectedTeam is not null;
 
     public ConcurrentBag<FranchiseSeason> FranchiseSeasons { get; } = new();
 

@@ -109,6 +109,8 @@
       <EmbeddedResource Include="Resources\Sql\PlayoffsAveragePitcherStats.sql" />
       <None Remove="Resources\Sql\MostRecentSeasonPlayoffSchedule.sql" />
       <EmbeddedResource Include="Resources\Sql\MostRecentSeasonPlayoffSchedule.sql" />
+      <None Remove="Resources\Sql\Teams.sql" />
+      <EmbeddedResource Include="Resources\Sql\Teams.sql" />
     </ItemGroup>
 
 </Project>
