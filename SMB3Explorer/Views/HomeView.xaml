@@ -8,10 +8,9 @@
              mc:Ignorable="d" d:DataContext="{d:DesignInstance viewModels:HomeViewModel}"
              VerticalAlignment="Stretch">
     <StackPanel VerticalAlignment="Stretch">
-        <Grid VerticalAlignment="Stretch">
+        <Grid Height="Auto" Width="Auto" MinHeight="500" MinWidth="800" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" MinWidth="200" />
-                <ColumnDefinition Width="2*" MinWidth="200" />
                 <ColumnDefinition Width="4*" MinWidth="200" />
             </Grid.ColumnDefinitions>
 
@@ -42,205 +41,51 @@
 
             </DockPanel>
 
-            <GroupBox Header="Player Careers"
-                      Grid.Row="0"
-                      Grid.Column="1"
-                      Margin="5"
-                      Padding="5">
-                <WrapPanel Orientation="Vertical"
-                           HorizontalAlignment="Stretch"
-                           Width="auto"
-                           Height="250">
-                    <Button
-                        Margin="0, 5, 0, 0"
-                        Padding="5"
-                        HorizontalAlignment="Stretch"
-                        Height="50"
-                        Command="{Binding ExportFranchiseCareerBattingStatisticsCommand}"
-                        Content="Export career regular season batting statistics" />
+            <DataGrid Name="Pitchers" ItemsSource="{Binding}" AutoGenerateColumns="False" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" ColumnWidth="*">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Name"  Binding="{Binding PlayerName}"/>
+                    <DataGridTextColumn Header="Pos"/>
+                    <DataGridTextColumn Header="Bat"/>
+                    <DataGridTextColumn Header="Throw"/>
+                    <DataGridTextColumn Header="Pow"/>
+                    <DataGridTextColumn Header="Con"/>
+                    <DataGridTextColumn Header="Spd"/>
+                    <DataGridTextColumn Header="Fld"/>
+                    <DataGridTextColumn Header="Vel"/>
+                    <DataGridTextColumn Header="Jnk"/>
+                    <DataGridTextColumn Header="Acc"/>
+                    <DataGridTextColumn Header="Arm"/>
+                    <DataGridTextColumn Header="Chemistry"/>
+                    <DataGridTextColumn Header="Trait 1"/>
+                    <DataGridTextColumn Header="Trait 2"/>
+                    <DataGridTextColumn Header="4F"/>
+                    <DataGridTextColumn Header="2F"/>
+                    <DataGridTextColumn Header="CF"/>
+                    <DataGridTextColumn Header="CH"/>
+                    <DataGridTextColumn Header="CB"/>
+                    <DataGridTextColumn Header="SL"/>
+                    <DataGridTextColumn Header="FK"/>
+                    <DataGridTextColumn Header="SB"/>
+                    <DataGridTextColumn Header="Angle"/>
+                </DataGrid.Columns>
+            </DataGrid>
 
-                    <Button
-                        Margin="0, 5, 0, 0"
-                        Padding="5"
-                        HorizontalAlignment="Stretch"
-                        Height="50"
-                        Command="{Binding ExportFranchiseCareerPitchingStatisticsCommand}"
-                        Content="Export career regular season pitching statistics" />
-
-                    <Button
-                        Margin="0, 5, 0, 0"
-                        Padding="5"
-                        HorizontalAlignment="Stretch"
-                        Height="50"
-                        Command="{Binding ExportFranchiseCareerPlayoffBattingStatisticsCommand}"
-                        Content="Export career playoff batting statistics" />
-
-                    <Button
-                        Margin="0, 5, 0, 0"
-                        Padding="5"
-                        HorizontalAlignment="Stretch"
-                        Height="50"
-                        Command="{Binding ExportFranchiseCareerPlayoffPitchingStatisticsCommand}"
-                        Content="Export career playoff pitching statistics" />
-                </WrapPanel>
-            </GroupBox>
-
-            <GroupBox Header="Players By Season"
-                      Grid.Row="0"
-                      Grid.Column="2"
-                      Margin="5"
-                      Padding="5">
-                <WrapPanel Orientation="Vertical"
-                           HorizontalAlignment="Stretch"
-                           Width="auto"
-                           Height="250">
-                    <Button
-                        Margin="0, 5, 0, 0"
-                        Padding="5"
-                        HorizontalAlignment="Stretch"
-                        Height="50"
-                        Command="{Binding ExportFranchiseSeasonBattingStatisticsCommand}"
-                        Content="Export all regular season batting statistics" />
-
-                    <Button
-                        Margin="0, 5, 0, 0"
-                        Padding="5"
-                        HorizontalAlignment="Stretch"
-                        Height="50"
-                        Command="{Binding ExportFranchiseSeasonPitchingStatisticsCommand}"
-                        Content="Export all regular season pitching statistics" />
-
-                    <Button
-                        Margin="0, 5, 0, 0"
-                        Padding="5"
-                        HorizontalAlignment="Stretch"
-                        Height="50"
-                        Command="{Binding ExportFranchiseSeasonPlayoffBattingStatisticsCommand}"
-                        Content="Export all playoff batting statistics" />
-
-                    <Button
-                        Margin="0, 5, 0, 0"
-                        Padding="5"
-                        HorizontalAlignment="Stretch"
-                        Height="50"
-                        Command="{Binding ExportFranchiseSeasonPlayoffPitchingStatisticsCommand}"
-                        Content="Export all playoff pitching statistics" />
-                </WrapPanel>
-            </GroupBox>
-
-            <GroupBox Header="Team Standings"
-                      Grid.Row="1"
-                      Grid.Column="1"
-                      Margin="5"
-                      Padding="5">
-                <WrapPanel Orientation="Vertical"
-                           HorizontalAlignment="Stretch"
-                           Height="250">
-                    <Button
-                        Margin="0, 5, 0, 0"
-                        Padding="5"
-                        HorizontalAlignment="Stretch"
-                        Height="50"
-                        Command="{Binding ExportFranchiseTeamSeasonStandingsCommand}"
-                        Content="Export team season standings" />
-
-                    <Button
-                        Margin="0, 5, 0, 0"
-                        Padding="5"
-                        HorizontalAlignment="Stretch"
-                        Height="50"
-                        Command="{Binding ExportFranchiseTeamPlayoffStandingsCommand}"
-                        Content="Export team playoff standings" />
-                </WrapPanel>
-            </GroupBox>
-            
-            <GroupBox Header="Current Season"
-                      Grid.Row="1"
-                      Grid.Column="2">
-                <WrapPanel Orientation="Vertical"
-                           HorizontalAlignment="Stretch"
-                           Height="250">
-                    <Button
-                        Margin="0, 5, 0, 0"
-                        Padding="5"
-                        HorizontalAlignment="Stretch"
-                        Height="50"
-                        Command="{Binding ExportTopPerformersBattingCommand}"
-                        Content="Export current season top batters" />
-                    
-                    <Button
-                        Margin="0, 5, 0, 0"
-                        Padding="5"
-                        HorizontalAlignment="Stretch"
-                        Height="50"
-                        Command="{Binding ExportTopPerformersPitchingCommand}"
-                        Content="Export current season top pitchers" />
-                    
-                    <Button
-                        Margin="0, 5, 0, 0"
-                        Padding="5"
-                        HorizontalAlignment="Stretch"
-                        Height="50"
-                        Command="{Binding ExportTopRookiesBattingCommand}"
-                        Content="Export current season top rookie batters" />
-                    
-                    <Button
-                        Margin="0, 5, 0, 0"
-                        Padding="5"
-                        HorizontalAlignment="Stretch"
-                        Height="50"
-                        Command="{Binding ExportTopRookiesPitchingCommand}"
-                        Content="Export current season top rookie pitchers" />
-                    
-                    <Button
-                        Margin="0, 5, 0, 0"
-                        Padding="5"
-                        HorizontalAlignment="Stretch"
-                        Height="50"
-                        Command="{Binding ExportTopPerformersBattingPlayoffsCommand}"
-                        Content="Export current season top playoff batters" />
-                    
-                    <Button
-                        Margin="0, 5, 0, 0"
-                        Padding="5"
-                        HorizontalAlignment="Stretch"
-                        Height="50"
-                        Command="{Binding ExportTopPerformersPitchingPlayoffsCommand}"
-                        Content="Export current season top playoff pitchers" />
-                    
-                    <Button
-                        Margin="0, 5, 0, 0"
-                        Padding="5"
-                        HorizontalAlignment="Stretch"
-                        Height="50"
-                        Command="{Binding ExportMostRecentSeasonPlayersCommand}"
-                        Content="Export current season players" />
-                    
-                    <Button
-                        Margin="0, 5, 0, 0"
-                        Padding="5"
-                        HorizontalAlignment="Stretch"
-                        Height="50"
-                        Command="{Binding ExportMostRecentSeasonTeamsCommand}"
-                        Content="Export current season teams" />
-                    
-                    <Button
-                        Margin="0, 5, 0, 0"
-                        Padding="5"
-                        HorizontalAlignment="Stretch"
-                        Height="50"
-                        Command="{Binding ExportMostRecentSeasonScheduleCommand}"
-                        Content="Export current season schedule" />
-                    
-                    <Button
-                        Margin="0, 5, 0, 0"
-                        Padding="5"
-                        HorizontalAlignment="Stretch"
-                        Height="50"
-                        Command="{Binding ExportMostRecentSeasonPlayoffScheduleCommand}"
-                        Content="Export current season playoff schedule" />
-                </WrapPanel>
-            </GroupBox>
+            <DataGrid Name="Players" ItemsSource="{Binding}" AutoGenerateColumns="False" Grid.Column="1" Grid.Row="0">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Name"  Binding="{Binding PlayerName}"/>
+                    <DataGridTextColumn Header="Pos"/>
+                    <DataGridTextColumn Header="Bat"/>
+                    <DataGridTextColumn Header="Throw"/>
+                    <DataGridTextColumn Header="Pow"/>
+                    <DataGridTextColumn Header="Con"/>
+                    <DataGridTextColumn Header="Spd"/>
+                    <DataGridTextColumn Header="Fld"/>
+                    <DataGridTextColumn Header="Arm"/>
+                    <DataGridTextColumn Header="Chemistry"/>
+                    <DataGridTextColumn Header="Trait 1"/>
+                    <DataGridTextColumn Header="Trait 2"/>
+                </DataGrid.Columns>
+            </DataGrid>
         </Grid>
     </StackPanel>
 </UserControl>
