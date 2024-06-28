@@ -19,6 +19,7 @@ public interface IDataService
         bool isCompressedSaveGame = true);
 
     Task<List<TeamSelection>> GetTeams();
+    Task<List<Player>> GetPlayers();
 
     Task<List<FranchiseSelection>> GetFranchises();
     Task<List<FranchiseSeason>> GetFranchiseSeasons();

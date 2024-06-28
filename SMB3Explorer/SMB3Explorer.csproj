@@ -50,6 +50,7 @@
 
     <ItemGroup>
       <None Remove="Resources\Sql\CareerStatsBatting.sql" />
+      <None Remove="Resources\Sql\Players.sql" />
       <EmbeddedResource Include="Resources\Sql\CareerStatsBatting.sql" />
       <None Remove="Resources\Sql\PlayoffCareerStatsBatting.sql" />
       <EmbeddedResource Include="Resources\Sql\PlayoffCareerStatsBatting.sql" />
@@ -74,6 +75,7 @@
       <None Remove="Resources\Sql\FranchiseSeasonStandings.sql" />
       <EmbeddedResource Include="Resources\Sql\FranchiseSeasonStandings.sql" />
       <None Remove="Resources\Sql\TopPerformersBatting.sql" />
+      <EmbeddedResource Include="Resources\Sql\Players.sql" />
       <EmbeddedResource Include="Resources\Sql\TopPerformersBatting.sql" />
       <None Remove="Resources\Sql\TopPerformersPitching.sql" />
       <EmbeddedResource Include="Resources\Sql\TopPerformersPitching.sql" />

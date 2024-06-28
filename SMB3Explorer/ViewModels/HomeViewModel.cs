@@ -155,7 +155,24 @@ public partial class HomeViewModel : ViewModelBase
 
                 break;
             }
+            case nameof(ApplicationContext.IsTeamSelected):
+            {
+                var players = _dataService.GetPlayers().Result;
+
+                break;
+            }
         }
+    }
+
+    [RelayCommand(CanExecute = nameof(ShouldLoadPLayers))]
+    private async Task SelectTeam()
+    {
+        await HandleTeamSelected();
+    }
+
+    private async Task HandleTeamSelected()
+    {
+        var players = await _dataService.GetPlayers();
     }
 
     [RelayCommand(CanExecute = nameof(CanExport))]
@@ -482,6 +499,11 @@ public partial class HomeViewModel : ViewModelBase
     private bool CanExport()
     {
         return FranchiseSelected && AtLeastOneFranchiseSeasonExists;
+    }
+
+    private bool ShouldLoadPLayers()
+    {
+        return TeamSelected;
     }
 
     private void GetSaveData()

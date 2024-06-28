@@ -100,7 +100,10 @@ public enum SqlFile
     GetLeaguesForSmb4SaveGame,
 
     [Description("Teams.sql")]
-    Teams
+    Teams,
+
+    [Description("Players.sql")]
+    Players
 }
 
 public static class SqlRunner
