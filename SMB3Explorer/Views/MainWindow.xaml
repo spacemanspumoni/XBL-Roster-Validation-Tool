@@ -5,7 +5,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:viewModels="clr-namespace:SMB3Explorer.ViewModels"
         mc:Ignorable="d"
-        Title="SMB3 Explorer"
+        Title="XBL Roster Validation Tool"
         Height="720"
         Width="1280"
         FontFamily="Segoe UI"
