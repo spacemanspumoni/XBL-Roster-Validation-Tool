@@ -27,6 +27,7 @@ public partial class HomeViewModel : ViewModelBase
     private ObservableCollection<FranchiseSelection> _franchises = new();
     private ObservableCollection<TeamSelection> _teams = new();
     private ObservableCollection<Player> _pitchers = new();
+    private ObservableCollection<Player> _positionPlayers = new();
     private bool _interactionEnabled;
     private FranchiseSelection? _selectedFranchise;
     private TeamSelection? _selectedTeam;
@@ -82,6 +83,17 @@ public partial class HomeViewModel : ViewModelBase
             SetField(ref _pitchers, value);
             Log.Information($"{nameof(Pitchers)}: {value}");
             OnPropertyChanged(nameof(Pitchers));
+        }
+    }
+
+    public ObservableCollection<Player> PositionPlayers
+    {
+        get => _positionPlayers;
+        set
+        {
+            SetField(ref _positionPlayers, value);
+            Log.Information($"{nameof(PositionPlayers)}: {value}");
+            OnPropertyChanged(nameof(PositionPlayers));
         }
     }
      
@@ -169,10 +181,12 @@ public partial class HomeViewModel : ViewModelBase
             case nameof(ApplicationContext.IsTeamSelected):
             {
                 var players = _dataService.GetPlayers().Result;
-                var pitchers = players.Where(p => new [] { "SP", "SP/RP", "RP", "CP" }.Contains(p.DisplayPosition));
+                var pitchers = players.Where(p => new [] { "SP", "SP/RP", "RP", "CP" }.Contains(p.DisplayPitchPosition));
                 var posPlayers = players.Where(p => p.Arm is not null);
                 _pitchers = new ObservableCollection<Player>(pitchers);
+                _positionPlayers = new ObservableCollection<Player>(posPlayers);
                 Pitchers = _pitchers;
+                PositionPlayers = _positionPlayers;
 
                 break;
             }
