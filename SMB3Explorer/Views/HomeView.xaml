@@ -41,9 +41,9 @@
 
             </DockPanel>
 
-            <DataGrid Name="Pitchers" ItemsSource="{Binding}" AutoGenerateColumns="False" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" ColumnWidth="*">
+            <DataGrid Name="Players" ItemsSource="{Binding}" AutoGenerateColumns="False" IsReadOnly="True" Grid.Column="1" Grid.Row="0">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Name"  Binding="{Binding PlayerName}"/>
+                    <DataGridTextColumn Header="Name"/>
                     <DataGridTextColumn Header="Pos"/>
                     <DataGridTextColumn Header="Bat"/>
                     <DataGridTextColumn Header="Throw"/>
@@ -51,10 +51,26 @@
                     <DataGridTextColumn Header="Con"/>
                     <DataGridTextColumn Header="Spd"/>
                     <DataGridTextColumn Header="Fld"/>
-                    <DataGridTextColumn Header="Vel"/>
-                    <DataGridTextColumn Header="Jnk"/>
-                    <DataGridTextColumn Header="Acc"/>
                     <DataGridTextColumn Header="Arm"/>
+                    <DataGridTextColumn Header="Chemistry"/>
+                    <DataGridTextColumn Header="Trait 1"/>
+                    <DataGridTextColumn Header="Trait 2"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <DataGrid x:Name="Pitchers" ItemsSource="{Binding Pitchers}" IsReadOnly="True" AutoGenerateColumns="False" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" ColumnWidth="*">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Name" Binding="{Binding DisplayName}"/>
+                    <DataGridTextColumn Header="Pos" Binding="{Binding DisplayPosition}"/>
+                    <DataGridTextColumn Header="Bat" Binding="{Binding DisplayBatting}"/>
+                    <DataGridTextColumn Header="Throw" Binding="{Binding DisplayThrowing}"/>
+                    <DataGridTextColumn Header="Pow" Binding="{Binding Power}"/>
+                    <DataGridTextColumn Header="Con" Binding="{Binding Contact}"/>
+                    <DataGridTextColumn Header="Spd" Binding="{Binding Speed}"/>
+                    <DataGridTextColumn Header="Fld" Binding="{Binding Fielding}"/>
+                    <DataGridTextColumn Header="Vel" Binding="{Binding Velocity}"/>
+                    <DataGridTextColumn Header="Jnk" Binding="{Binding Junk}"/>
+                    <DataGridTextColumn Header="Acc" Binding="{Binding Accuracy}"/>
                     <DataGridTextColumn Header="Chemistry"/>
                     <DataGridTextColumn Header="Trait 1"/>
                     <DataGridTextColumn Header="Trait 2"/>
@@ -67,23 +83,6 @@
                     <DataGridTextColumn Header="FK"/>
                     <DataGridTextColumn Header="SB"/>
                     <DataGridTextColumn Header="Angle"/>
-                </DataGrid.Columns>
-            </DataGrid>
-
-            <DataGrid Name="Players" ItemsSource="{Binding}" AutoGenerateColumns="False" Grid.Column="1" Grid.Row="0">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Name"  Binding="{Binding PlayerName}"/>
-                    <DataGridTextColumn Header="Pos"/>
-                    <DataGridTextColumn Header="Bat"/>
-                    <DataGridTextColumn Header="Throw"/>
-                    <DataGridTextColumn Header="Pow"/>
-                    <DataGridTextColumn Header="Con"/>
-                    <DataGridTextColumn Header="Spd"/>
-                    <DataGridTextColumn Header="Fld"/>
-                    <DataGridTextColumn Header="Arm"/>
-                    <DataGridTextColumn Header="Chemistry"/>
-                    <DataGridTextColumn Header="Trait 1"/>
-                    <DataGridTextColumn Header="Trait 2"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>

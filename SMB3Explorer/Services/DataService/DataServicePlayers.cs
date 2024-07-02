@@ -36,6 +36,9 @@ public partial class DataService
             var velocity = (long?)(reader["Velocity"].GetType() != typeof(DBNull) ? reader["Velocity"] : null);
             var junk = (long?)(reader["Junk"].GetType() != typeof(DBNull) ? reader["Junk"] : null);
             var accuracy = (long?)(reader["Accuracy"].GetType() != typeof(DBNull) ? reader["Accuracy"] : null);
+            var position = (long)reader["Position"];
+            var batting = (long)reader["Batting"];
+            var throwing = (long)reader["Throwing"];
             players.Add(new Player
             {
                 Id = playerId,
@@ -49,6 +52,9 @@ public partial class DataService
                 Velocity = velocity,
                 Junk = junk,
                 Accuracy = accuracy,
+                Position = position,
+                Batting = batting,
+                Throwing = throwing,
             });
         }
 
