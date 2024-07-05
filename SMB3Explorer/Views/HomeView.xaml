@@ -32,34 +32,15 @@
                         ItemsSource="{Binding Teams}"
                         SelectedItem="{Binding SelectedTeam}" />
 
-                    <Label
-                        Visibility="{Binding NoFranchiseSeasonsVisibility}"
-                        Content="No seasons exist for this franchise"
-                        Foreground="Red"
-                        FontWeight="Bold" />
+                    <Button Margin="10" Width="200"
+                        Content="Manually select XBL roster .csv file"
+                        Command="{Binding ManuallySelectXBLRosterCSVCommand}">
+                    </Button>
                 </StackPanel>
 
             </DockPanel>
 
-            <DataGrid x:Name="Players" ItemsSource="{Binding PositionPlayers}" AutoGenerateColumns="False" IsReadOnly="True" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" ColumnWidth="*">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Name" Binding="{Binding DisplayName}"/>
-                    <DataGridTextColumn Header="Pos" Binding="{Binding DisplayPrimaryPosition}"/>
-                    <DataGridTextColumn Header="S.Pos" Binding="{Binding DisplaySecondaryPosition}"/>
-                    <DataGridTextColumn Header="Bat" Binding="{Binding DisplayBatting}"/>
-                    <DataGridTextColumn Header="Throw" Binding="{Binding DisplayThrowing}"/>
-                    <DataGridTextColumn Header="Pow" Binding="{Binding Power}"/>
-                    <DataGridTextColumn Header="Con" Binding="{Binding Contact}"/>
-                    <DataGridTextColumn Header="Spd" Binding="{Binding Speed}"/>
-                    <DataGridTextColumn Header="Fld" Binding="{Binding Fielding}"/>
-                    <DataGridTextColumn Header="Arm" Binding="{Binding Arm}"/>
-                    <DataGridTextColumn Header="Chemistry" Binding="{Binding DisplayChemistry}"/>
-                    <DataGridTextColumn Header="Trait 1" Binding="{Binding Trait1}"/>
-                    <DataGridTextColumn Header="Trait 2" Binding="{Binding Trait2}"/>
-                </DataGrid.Columns>
-            </DataGrid>
-
-            <DataGrid x:Name="Pitchers" ItemsSource="{Binding Pitchers}" IsReadOnly="True" AutoGenerateColumns="False" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" ColumnWidth="*">
+            <DataGrid x:Name="Pitchers" ItemsSource="{Binding Pitchers}" IsReadOnly="True" AutoGenerateColumns="False" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" ColumnWidth="*">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Name" Binding="{Binding DisplayName}"/>
                     <DataGridTextColumn Header="Pos" Binding="{Binding DisplayPitchPosition}"/>
@@ -84,6 +65,24 @@
                     <DataGridCheckBoxColumn Header="FK" Binding="{Binding Fork}"/>
                     <DataGridCheckBoxColumn Header="SB" Binding="{Binding Screwball}"/>
                     <DataGridTextColumn Header="Angle" Binding="{Binding DisplayArmAngle}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <DataGrid x:Name="Players" ItemsSource="{Binding PositionPlayers}" AutoGenerateColumns="False" IsReadOnly="True" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" ColumnWidth="*">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Name" Binding="{Binding DisplayName}"/>
+                    <DataGridTextColumn Header="Pos" Binding="{Binding DisplayPrimaryPosition}"/>
+                    <DataGridTextColumn Header="S.Pos" Binding="{Binding DisplaySecondaryPosition}"/>
+                    <DataGridTextColumn Header="Bat" Binding="{Binding DisplayBatting}"/>
+                    <DataGridTextColumn Header="Throw" Binding="{Binding DisplayThrowing}"/>
+                    <DataGridTextColumn Header="Pow" Binding="{Binding Power}"/>
+                    <DataGridTextColumn Header="Con" Binding="{Binding Contact}"/>
+                    <DataGridTextColumn Header="Spd" Binding="{Binding Speed}"/>
+                    <DataGridTextColumn Header="Fld" Binding="{Binding Fielding}"/>
+                    <DataGridTextColumn Header="Arm" Binding="{Binding Arm}"/>
+                    <DataGridTextColumn Header="Chemistry" Binding="{Binding DisplayChemistry}"/>
+                    <DataGridTextColumn Header="Trait 1" Binding="{Binding Trait1}"/>
+                    <DataGridTextColumn Header="Trait 2" Binding="{Binding Trait2}"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
