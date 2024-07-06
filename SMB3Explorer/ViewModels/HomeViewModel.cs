@@ -37,6 +37,7 @@ public partial class HomeViewModel : ViewModelBase
     private FranchiseSelection? _selectedFranchise;
     private TeamSelection? _selectedTeam;
     private bool _atLeastOneFranchiseSeasonExists;
+    private string _selectedXBLRosterFile = string.Empty;
 
     public HomeViewModel(INavigationService navigationService, IDataService dataService,
         IApplicationContext applicationContext, ISystemIoWrapper systemIoWrapper)
@@ -153,6 +154,15 @@ public partial class HomeViewModel : ViewModelBase
         }
     }
 
+    public string SelectedXBLRosterFile
+    {
+        get => _selectedXBLRosterFile;
+        set {
+            _selectedXBLRosterFile = value;
+            OnPropertyChanged(nameof(SelectedXBLRosterFile));
+        }
+    }
+
     private bool FranchiseSelected => SelectedFranchise is not null;
     private bool TeamSelected => SelectedTeam is not null;
 
@@ -213,6 +223,7 @@ public partial class HomeViewModel : ViewModelBase
                 _positionPlayers = new ObservableCollection<Player>(posPlayers);
                 Pitchers = _pitchers;
                 PositionPlayers = _positionPlayers;
+                ValidatePlayers(SelectedXBLRosterFile);
 
                 break;
             }
@@ -233,8 +244,13 @@ public partial class HomeViewModel : ViewModelBase
             Mouse.OverrideCursor = Cursors.Arrow;
             return;
         }
-              
 
+        SelectedXBLRosterFile = filePath.ToString();
+        ValidatePlayers(filePath);
+    }
+
+    private void ValidatePlayers(string filePath)
+    {
         using (SpreadsheetDocument spreadsheetDocument = SpreadsheetDocument.Open(filePath, false))
         {
             var pitcherRows = new[] { 6, 8, 10, 12, 16, 18, 20, 22 };

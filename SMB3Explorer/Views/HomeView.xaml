@@ -23,6 +23,11 @@
                 <StackPanel DockPanel.Dock="Top"
                             Orientation="Vertical"
                             VerticalAlignment="Stretch">
+                    <Button Margin="10" Width="200"
+                        Content="Select XBL roster .xlsx file"
+                        Command="{Binding ManuallySelectXBLRosterCSVCommand}">
+                    </Button>
+                    <TextBlock Text="{Binding SelectedXBLRosterFile}" />
                     <Label HorizontalAlignment="Stretch"
                            Content="Select a team:" />
                     <ComboBox
@@ -31,11 +36,6 @@
                         DisplayMemberPath="TeamName"
                         ItemsSource="{Binding Teams}"
                         SelectedItem="{Binding SelectedTeam}" />
-
-                    <Button Margin="10" Width="200"
-                        Content="Manually select XBL roster .csv file"
-                        Command="{Binding ManuallySelectXBLRosterCSVCommand}">
-                    </Button>
                 </StackPanel>
 
             </DockPanel>
