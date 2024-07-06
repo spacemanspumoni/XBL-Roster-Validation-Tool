@@ -16,7 +16,12 @@ namespace SMB3Explorer.Models.Internal
             Junk = ValidateNumberProperty(sheetPlayer.Junk, gamePlayer?.Junk);
             Accuracy = ValidateNumberProperty(sheetPlayer.Accuracy, gamePlayer?.Accuracy);
             PrimaryPosition = ValidateStringProperty(sheetPlayer.PrimaryPosition, gamePlayer?.DisplayPrimaryPosition);
-            SecondaryPosition = ValidateStringProperty(sheetPlayer.SecondaryPosition, gamePlayer?.DisplaySecondaryPosition);
+            SecondaryPosition = new ValidatedPlayerProperty<string?>
+            {
+                Value = $"{sheetPlayer.SecondaryPosition?.Replace("-", "")}",
+                IsValid = sheetPlayer.SecondaryPosition == "-" && !(gamePlayer?.SecondaryPosition.HasValue ?? false) || sheetPlayer.SecondaryPosition == gamePlayer?.DisplaySecondaryPosition,
+                Delta = gamePlayer?.DisplaySecondaryPosition
+            };
             PitchPosition = ValidateStringProperty(sheetPlayer.PitchPosition, gamePlayer?.DisplayPitchPosition);
             Batting = ValidateStringProperty(sheetPlayer.Batting, gamePlayer?.DisplayBatting);
             Throwing = ValidateStringProperty(sheetPlayer.Throwing, gamePlayer?.DisplayThrowing);
