@@ -40,31 +40,31 @@
 
             </DockPanel>
 
-            <DataGrid x:Name="Pitchers" ItemsSource="{Binding Pitchers}" IsReadOnly="True" AutoGenerateColumns="False" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" ColumnWidth="*">
+            <DataGrid x:Name="Pitchers" ItemsSource="{Binding ValidatedPitchers}" IsReadOnly="True" AutoGenerateColumns="False" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" ColumnWidth="*">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Name" Binding="{Binding DisplayName}"/>
-                    <DataGridTextColumn Header="Pos" Binding="{Binding DisplayPitchPosition}"/>
-                    <DataGridTextColumn Header="Bat" Binding="{Binding DisplayBatting}"/>
-                    <DataGridTextColumn Header="Throw" Binding="{Binding DisplayThrowing}"/>
-                    <DataGridTextColumn Header="Pow" Binding="{Binding Power}"/>
-                    <DataGridTextColumn Header="Con" Binding="{Binding Contact}"/>
-                    <DataGridTextColumn Header="Spd" Binding="{Binding Speed}"/>
-                    <DataGridTextColumn Header="Fld" Binding="{Binding Fielding}"/>
-                    <DataGridTextColumn Header="Vel" Binding="{Binding Velocity}"/>
-                    <DataGridTextColumn Header="Jnk" Binding="{Binding Junk}"/>
-                    <DataGridTextColumn Header="Acc" Binding="{Binding Accuracy}"/>
-                    <DataGridTextColumn Header="Chemistry" Binding="{Binding DisplayChemistry}"/>
-                    <DataGridTextColumn Header="Trait 1" Binding="{Binding Trait1}"/>
-                    <DataGridTextColumn Header="Trait 2" Binding="{Binding Trait2}"/>
-                    <DataGridCheckBoxColumn Header="4F" Binding="{Binding FourSeam}"/>
-                    <DataGridCheckBoxColumn Header="2F" Binding="{Binding TwoSeam}"/>
-                    <DataGridCheckBoxColumn Header="CF" Binding="{Binding Cutter}"/>
-                    <DataGridCheckBoxColumn Header="CH" Binding="{Binding ChangeUp}"/>
-                    <DataGridCheckBoxColumn Header="CB" Binding="{Binding Curve}"/>
-                    <DataGridCheckBoxColumn Header="SL" Binding="{Binding Slider}"/>
-                    <DataGridCheckBoxColumn Header="FK" Binding="{Binding Fork}"/>
-                    <DataGridCheckBoxColumn Header="SB" Binding="{Binding Screwball}"/>
-                    <DataGridTextColumn Header="Angle" Binding="{Binding DisplayArmAngle}"/>
+                    <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                    <DataGridTextColumn Header="Pos" Binding="{Binding PitchPosition.DisplayValue}"/>
+                    <DataGridTextColumn Header="Bat" Binding="{Binding Batting.DisplayValue}"/>
+                    <DataGridTextColumn Header="Throw" Binding="{Binding Throwing.DisplayValue}"/>
+                    <DataGridTextColumn Header="Pow" Binding="{Binding Power.DisplayValue}"/>
+                    <DataGridTextColumn Header="Con" Binding="{Binding Contact.DisplayValue}"/>
+                    <DataGridTextColumn Header="Spd" Binding="{Binding Speed.DisplayValue}"/>
+                    <DataGridTextColumn Header="Fld" Binding="{Binding Fielding.DisplayValue}"/>
+                    <DataGridTextColumn Header="Vel" Binding="{Binding Velocity.DisplayValue}"/>
+                    <DataGridTextColumn Header="Jnk" Binding="{Binding Junk.DisplayValue}"/>
+                    <DataGridTextColumn Header="Acc" Binding="{Binding Accuracy.DisplayValue}"/>
+                    <DataGridTextColumn Header="Chemistry" Binding="{Binding Chemistry.DisplayValue}"/>
+                    <DataGridTextColumn Header="Trait 1" Binding="{Binding Trait1.DisplayValue}"/>
+                    <DataGridTextColumn Header="Trait 2" Binding="{Binding Trait2.DisplayValue}"/>
+                    <DataGridCheckBoxColumn Header="4F" Binding="{Binding FourSeam.Value}"/>
+                    <DataGridCheckBoxColumn Header="2F" Binding="{Binding TwoSeam.Value}"/>
+                    <DataGridCheckBoxColumn Header="CF" Binding="{Binding Cutter.Value}"/>
+                    <DataGridCheckBoxColumn Header="CH" Binding="{Binding ChangeUp.Value}"/>
+                    <DataGridCheckBoxColumn Header="CB" Binding="{Binding Curve.Value}"/>
+                    <DataGridCheckBoxColumn Header="SL" Binding="{Binding Slider.Value}"/>
+                    <DataGridCheckBoxColumn Header="FK" Binding="{Binding Fork.Value}"/>
+                    <DataGridCheckBoxColumn Header="SB" Binding="{Binding Screwball.Value}"/>
+                    <DataGridTextColumn Header="Angle" Binding="{Binding ArmAngle.DisplayValue}"/>
                 </DataGrid.Columns>
             </DataGrid>
 

@@ -2,37 +2,59 @@
 {
     public class ValidatedPlayer
     {
-        public ValidatedPlayer(SheetPlayer sheetPlayer, Player gamePlayer)
+        public ValidatedPlayer(SheetPlayer sheetPlayer, Player? gamePlayer)
         {
             Name = sheetPlayer.Name;
-            Power = ValidateNumberProperty(sheetPlayer.Power, gamePlayer.Power);
-            Contact = ValidateNumberProperty(sheetPlayer.Power, gamePlayer.Power);
-            Speed = ValidateNumberProperty(sheetPlayer.Power, gamePlayer.Power);
-            Fielding = ValidateNumberProperty(sheetPlayer.Power, gamePlayer.Power);
-            Arm = ValidateNumberProperty(sheetPlayer.Power, gamePlayer.Power);
-            Velocity = ValidateNumberProperty(sheetPlayer.Power, gamePlayer.Power);
-            Junk = ValidateNumberProperty(sheetPlayer.Power, gamePlayer.Power);
-            Accuracy = ValidateNumberProperty(sheetPlayer.Power, gamePlayer.Power);
-            PrimaryPosition = ValidateStringProperty(sheetPlayer.PrimaryPosition, gamePlayer.DisplayPrimaryPosition);
-            SecondaryPosition = ValidateStringProperty(sheetPlayer.SecondaryPosition, gamePlayer.DisplaySecondaryPosition);
-            PitchPosition = ValidateStringProperty(sheetPlayer.PitchPosition, gamePlayer.DisplayPitchPosition);
-            Batting = ValidateStringProperty(sheetPlayer.Batting, gamePlayer.DisplayBatting);
-            Throwing = ValidateStringProperty(sheetPlayer.Throwing, gamePlayer.DisplayThrowing);
-            Chemistry = ValidateStringProperty(sheetPlayer.Chemistry, gamePlayer.DisplayChemistry);
-            FourSeam = ValidateBoolProperty(sheetPlayer.FourSeam, gamePlayer.FourSeam);
-            TwoSeam = ValidateBoolProperty(sheetPlayer.TwoSeam, gamePlayer.TwoSeam);
-            Screwball = ValidateBoolProperty(sheetPlayer.Screwball, gamePlayer.Screwball);
-            ChangeUp = ValidateBoolProperty(sheetPlayer.ChangeUp, gamePlayer.ChangeUp);
-            Fork = ValidateBoolProperty(sheetPlayer.Fork, gamePlayer.Fork);
-            Curve = ValidateBoolProperty(sheetPlayer.Curve, gamePlayer.Curve);
-            Slider = ValidateBoolProperty(sheetPlayer.Slider, gamePlayer.FourSeam);
-            Cutter = ValidateBoolProperty(sheetPlayer.Cutter, gamePlayer.Cutter);
-            ArmAngle = ValidateStringProperty(sheetPlayer.ArmAngle, gamePlayer.DisplayArmAngle);
-            Trait1 = ValidateStringProperty(sheetPlayer.Trait1, gamePlayer.Trait1);
-            Trait2 = ValidateStringProperty(sheetPlayer.Trait2, gamePlayer.Trait2);
+            Power = ValidateNumberProperty(sheetPlayer.Power, gamePlayer?.Power);
+            Contact = ValidateNumberProperty(sheetPlayer.Contact, gamePlayer?.Contact);
+            Speed = ValidateNumberProperty(sheetPlayer.Speed, gamePlayer?.Speed);
+            Fielding = ValidateNumberProperty(sheetPlayer.Fielding, gamePlayer?.Fielding);
+            Arm = ValidateNumberProperty(sheetPlayer.Arm, gamePlayer?.Arm);
+            Velocity = ValidateNumberProperty(sheetPlayer.Velocity, gamePlayer?.Velocity);
+            Junk = ValidateNumberProperty(sheetPlayer.Junk, gamePlayer?.Junk);
+            Accuracy = ValidateNumberProperty(sheetPlayer.Accuracy, gamePlayer?.Accuracy);
+            PrimaryPosition = ValidateStringProperty(sheetPlayer.PrimaryPosition, gamePlayer?.DisplayPrimaryPosition);
+            SecondaryPosition = ValidateStringProperty(sheetPlayer.SecondaryPosition, gamePlayer?.DisplaySecondaryPosition);
+            PitchPosition = ValidateStringProperty(sheetPlayer.PitchPosition, gamePlayer?.DisplayPitchPosition);
+            Batting = ValidateStringProperty(sheetPlayer.Batting, gamePlayer?.DisplayBatting);
+            Throwing = ValidateStringProperty(sheetPlayer.Throwing, gamePlayer?.DisplayThrowing);
+            Chemistry = ValidateStringProperty(sheetPlayer.Chemistry, gamePlayer?.DisplayChemistry);
+            FourSeam = ValidateBoolProperty(sheetPlayer.FourSeam, gamePlayer?.FourSeam);
+            TwoSeam = ValidateBoolProperty(sheetPlayer.TwoSeam, gamePlayer?.TwoSeam);
+            Screwball = ValidateBoolProperty(sheetPlayer.Screwball, gamePlayer?.Screwball);
+            ChangeUp = ValidateBoolProperty(sheetPlayer.ChangeUp, gamePlayer?.ChangeUp);
+            Fork = ValidateBoolProperty(sheetPlayer.Fork, gamePlayer?.Fork);
+            Curve = ValidateBoolProperty(sheetPlayer.Curve, gamePlayer?.Curve);
+            Slider = ValidateBoolProperty(sheetPlayer.Slider, gamePlayer?.FourSeam);
+            Cutter = ValidateBoolProperty(sheetPlayer.Cutter, gamePlayer?.Cutter);
+            ArmAngle = ValidateStringProperty(sheetPlayer.ArmAngle, gamePlayer?.DisplayArmAngle);
+
+            var comparableSheetTrait1 = sheetPlayer.Trait1?.Replace("(+)", "").Replace("(-)", "").Replace("--", "").Trim();
+            var comparableSheetTrait2 = sheetPlayer.Trait2?.Replace("(+)", "").Replace("(-)", "").Replace("--", "").Trim();
+            var trait1Match = false;
+
+            if (comparableSheetTrait1?.Length > 0)
+            {
+                trait1Match = comparableSheetTrait1 == gamePlayer?.Trait1;
+                Trait1 = new ValidatedPlayerProperty<string?>
+                {
+                    Value = comparableSheetTrait1,
+                    IsValid = trait1Match || comparableSheetTrait1 == gamePlayer?.Trait2,
+                    Delta = ""
+                };
+            }
+            if (comparableSheetTrait2?.Length > 0)
+            {
+                Trait2 = new ValidatedPlayerProperty<string?>
+                {
+                    Value = comparableSheetTrait2,
+                    IsValid = trait1Match && comparableSheetTrait2 == gamePlayer?.Trait2 || comparableSheetTrait2 == gamePlayer?.Trait1,
+                    Delta = ""
+                };
+            }
         }
 
-        private ValidatedPlayerProperty<string?> ValidateNumberProperty(int sheetValue, long gameValue)
+        private ValidatedPlayerProperty<string?> ValidateNumberProperty(int? sheetValue, long? gameValue)
         {
             return new ValidatedPlayerProperty<string?>
             {
@@ -52,7 +74,7 @@
             };
         }
 
-        private ValidatedPlayerProperty<bool> ValidateBoolProperty(bool sheetValue, bool gameValue)
+        private ValidatedPlayerProperty<bool> ValidateBoolProperty(bool sheetValue, bool? gameValue)
         {
             return new ValidatedPlayerProperty<bool>
             {

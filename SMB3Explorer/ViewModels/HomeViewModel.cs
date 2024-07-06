@@ -243,10 +243,17 @@ public partial class HomeViewModel : ViewModelBase
             var playerRows = new[] { 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52 };
             var players = playerRows.Select(row => BuildSheetPlayer(spreadsheetDocument, row));
 
-            //var validatedPitchers = pitchers.Select(pitcher => new ValidatedPlayer(pitcher, _pitchers.First(p => p.DisplayName == pitcher.Name)));
-            //var validatedPlayers = players.Select(player => new ValidatedPlayer(player, _positionPlayers.First(p => p.DisplayName == player.Name)));
+            _validatedPitchers = new ObservableCollection<ValidatedPlayer>(
+                pitchers.Select(pitcher =>
+                    new ValidatedPlayer(pitcher, _pitchers.FirstOrDefault(p => p.DisplayName == pitcher.Name))));
+            ValidatedPitchers = _validatedPitchers;
 
-            Console.WriteLine("f");
+            _validatedPositionPlayers = new ObservableCollection<ValidatedPlayer>(
+                players.Select(player =>
+                    new ValidatedPlayer(player, _positionPlayers.FirstOrDefault(p => p.DisplayName == player.Name))));
+            ValidatedPositionPlayers = _validatedPositionPlayers;
+
+            Mouse.OverrideCursor = Cursors.Arrow;
             return;
         }
     }
