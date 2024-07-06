@@ -1,4 +1,6 @@
-﻿namespace SMB3Explorer.Models.Internal
+﻿using System.Windows.Media;
+
+namespace SMB3Explorer.Models.Internal
 {
     public class ValidatedPlayer
     {
@@ -130,5 +132,6 @@
                 return $"{Value} ({Delta})";
             }
         }
+        public SolidColorBrush Color => IsValid ? Brushes.White : Brushes.LightSalmon;
     }
 }

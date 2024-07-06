@@ -42,47 +42,263 @@
 
             <DataGrid x:Name="Pitchers" ItemsSource="{Binding ValidatedPitchers}" IsReadOnly="True" AutoGenerateColumns="False" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" ColumnWidth="*">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
-                    <DataGridTextColumn Header="Pos" Binding="{Binding PitchPosition.DisplayValue}"/>
-                    <DataGridTextColumn Header="Bat" Binding="{Binding Batting.DisplayValue}"/>
-                    <DataGridTextColumn Header="Throw" Binding="{Binding Throwing.DisplayValue}"/>
-                    <DataGridTextColumn Header="Pow" Binding="{Binding Power.DisplayValue}"/>
-                    <DataGridTextColumn Header="Con" Binding="{Binding Contact.DisplayValue}"/>
-                    <DataGridTextColumn Header="Spd" Binding="{Binding Speed.DisplayValue}"/>
-                    <DataGridTextColumn Header="Fld" Binding="{Binding Fielding.DisplayValue}"/>
-                    <DataGridTextColumn Header="Vel" Binding="{Binding Velocity.DisplayValue}"/>
-                    <DataGridTextColumn Header="Jnk" Binding="{Binding Junk.DisplayValue}"/>
-                    <DataGridTextColumn Header="Acc" Binding="{Binding Accuracy.DisplayValue}"/>
-                    <DataGridTextColumn Header="Chemistry" Binding="{Binding Chemistry.DisplayValue}"/>
-                    <DataGridTextColumn Header="Trait 1" Binding="{Binding Trait1.DisplayValue}"/>
-                    <DataGridTextColumn Header="Trait 2" Binding="{Binding Trait2.DisplayValue}"/>
-                    <DataGridCheckBoxColumn Header="4F" Binding="{Binding FourSeam.Value}"/>
-                    <DataGridCheckBoxColumn Header="2F" Binding="{Binding TwoSeam.Value}"/>
-                    <DataGridCheckBoxColumn Header="CF" Binding="{Binding Cutter.Value}"/>
-                    <DataGridCheckBoxColumn Header="CH" Binding="{Binding ChangeUp.Value}"/>
-                    <DataGridCheckBoxColumn Header="CB" Binding="{Binding Curve.Value}"/>
-                    <DataGridCheckBoxColumn Header="SL" Binding="{Binding Slider.Value}"/>
-                    <DataGridCheckBoxColumn Header="FK" Binding="{Binding Fork.Value}"/>
-                    <DataGridCheckBoxColumn Header="SB" Binding="{Binding Screwball.Value}"/>
-                    <DataGridTextColumn Header="Angle" Binding="{Binding ArmAngle.DisplayValue}"/>
+                    <DataGridTemplateColumn Header="Name">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Name}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Pos">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding PitchPosition.DisplayValue}" Background="{Binding PitchPosition.Color}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Bat">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Batting.DisplayValue}" Background="{Binding Batting.Color}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Throw">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Throwing.DisplayValue}" Background="{Binding Throwing.Color}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Pow">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Power.DisplayValue}" Background="{Binding Power.Color}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Con">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Contact.DisplayValue}" Background="{Binding Contact.Color}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Spd">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Speed.DisplayValue}" Background="{Binding Speed.Color}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Fld">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Fielding.DisplayValue}" Background="{Binding Fielding.Color}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Vel">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Velocity.DisplayValue}" Background="{Binding Velocity.Color}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Jnk">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Junk.DisplayValue}" Background="{Binding Junk.Color}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Acc">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Accuracy.DisplayValue}" Background="{Binding Accuracy.Color}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Chemistry">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Chemistry.DisplayValue}" Background="{Binding Chemistry.Color}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Trait 1">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Trait1.DisplayValue}" Background="{Binding Trait1.Color}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Trait 2">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Trait2.DisplayValue}" Background="{Binding Trait2.Color}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="4F">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox IsChecked="{Binding FourSeam.Value}" Background="{Binding FourSeam.Color}" IsEnabled="False" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="2F">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox IsChecked="{Binding TwoSeam.Value}" Background="{Binding TwoSeam.Color}" IsEnabled="False" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="CF">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox IsChecked="{Binding Cutter.Value}" Background="{Binding Cutter.Color}" IsEnabled="False" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="CH">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox IsChecked="{Binding ChangeUp.Value}" Background="{Binding ChangeUp.Color}" IsEnabled="False" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="CB">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox IsChecked="{Binding Curve.Value}" Background="{Binding Curve.Color}" IsEnabled="False" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="SL">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox IsChecked="{Binding Slider.Value}" Background="{Binding Slider.Color}" IsEnabled="False" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="FK">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox IsChecked="{Binding Fork.Value}" Background="{Binding Fork.Color}" IsEnabled="False" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="SB">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox IsChecked="{Binding Screwball.Value}" Background="{Binding Screwball.Color}" IsEnabled="False" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Angle">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding ArmAngle.DisplayValue}" Background="{Binding ArmAngle.Color}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
 
-            <DataGrid x:Name="Players" ItemsSource="{Binding PositionPlayers}" AutoGenerateColumns="False" IsReadOnly="True" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" ColumnWidth="*">
+            <DataGrid x:Name="Players" ItemsSource="{Binding ValidatedPositionPlayers}" AutoGenerateColumns="False" IsReadOnly="True" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" ColumnWidth="*">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Name" Binding="{Binding DisplayName}"/>
-                    <DataGridTextColumn Header="Pos" Binding="{Binding DisplayPrimaryPosition}"/>
-                    <DataGridTextColumn Header="S.Pos" Binding="{Binding DisplaySecondaryPosition}"/>
-                    <DataGridTextColumn Header="Bat" Binding="{Binding DisplayBatting}"/>
-                    <DataGridTextColumn Header="Throw" Binding="{Binding DisplayThrowing}"/>
-                    <DataGridTextColumn Header="Pow" Binding="{Binding Power}"/>
-                    <DataGridTextColumn Header="Con" Binding="{Binding Contact}"/>
-                    <DataGridTextColumn Header="Spd" Binding="{Binding Speed}"/>
-                    <DataGridTextColumn Header="Fld" Binding="{Binding Fielding}"/>
-                    <DataGridTextColumn Header="Arm" Binding="{Binding Arm}"/>
-                    <DataGridTextColumn Header="Chemistry" Binding="{Binding DisplayChemistry}"/>
-                    <DataGridTextColumn Header="Trait 1" Binding="{Binding Trait1}"/>
-                    <DataGridTextColumn Header="Trait 2" Binding="{Binding Trait2}"/>
+                    <DataGridTemplateColumn Header="Name">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Name}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Pos">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding PrimaryPosition.DisplayValue}" Background="{Binding PrimaryPosition.Color}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="S.Pos">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding SecondaryPosition.DisplayValue}" Background="{Binding SecondaryPosition.Color}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Bat">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Batting.DisplayValue}" Background="{Binding Batting.Color}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Throw">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Throwing.DisplayValue}" Background="{Binding Throwing.Color}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Pow">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Power.DisplayValue}" Background="{Binding Power.Color}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Con">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Contact.DisplayValue}" Background="{Binding Contact.Color}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Spd">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Speed.DisplayValue}" Background="{Binding Speed.Color}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Fld">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Fielding.DisplayValue}" Background="{Binding Fielding.Color}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Arm">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Arm.DisplayValue}" Background="{Binding Arm.Color}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Chemistry">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Chemistry.DisplayValue}" Background="{Binding Chemistry.Color}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Trait 1">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Trait1.DisplayValue}" Background="{Binding Trait1.Color}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Trait 2">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Trait2.DisplayValue}" Background="{Binding Trait2.Color}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
